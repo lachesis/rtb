@@ -110,7 +110,7 @@ var server = net.createServer(function(socket) {
       }
     }
     else if (text.startsWith("BUCKET ")) {
-      var match = /BUCKET (\w+) ([0-9.]+) ([0-9]+)/.exec(text);
+      var match = /BUCKET ([^\s]+) ([0-9.]+) ([0-9]+)/.exec(text);
       try {
         new Bucket(match[1], parseFloat(match[2]), parseInt(match[3])).register()
         socket.write(":RES registered\r\n")
